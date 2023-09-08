@@ -8,13 +8,11 @@ const fetchRandomGreetingSuccess = (greeting) => ({
   greeting,
 });
 
-export const fetchRandomGreeting = () => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get('/random_greeting');
-      dispatch(fetchRandomGreetingSuccess(response.data.message));
-    } catch (error) {
-      console.error('Error fetching random greeting', error);
-    }
-  };
+export const fetchRandomGreeting = () => async (dispatch) => {
+  try {
+    const response = await axios.get('/random_greeting');
+    dispatch(fetchRandomGreetingSuccess(response.data.message));
+  } catch (error) {
+    console.error('Error fetching random greeting', error);
+  }
 };

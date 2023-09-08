@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchRandomGreeting } from '../actions';
 import axios from 'axios';
+import { fetchRandomGreeting } from '../actions';
 
-const Greeting = () => {
+function Greeting() {
   const dispatch = useDispatch();
   const greeting = useSelector((state) => state.greeting);
 
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const fetchData = async () => {
-  
+
     try {
       const response = await axios.get('http://127.0.0.1:3000/random_greeting');
       dispatch(fetchRandomGreeting(response.data));
@@ -28,6 +28,6 @@ const Greeting = () => {
       <p>{greeting}</p>
     </div>
   );
-};
+}
 
 export default Greeting;
